@@ -1,0 +1,40 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+def buildScalaVersion = "2.11.5"
+def mainVersionScala = "2.11"
+def unfilteredVersion = "0.8.4"
+
+applicationName = "woodstk"
+mainClassName = "no.woodstk.App"
+
+dependencies {
+    compile "org.scala-lang:scala-library:$buildScalaVersion"
+
+    compile "net.databinder:unfiltered-filter_$mainVersionScala:$unfilteredVersion"
+    compile "net.databinder:unfiltered-json4s_$mainVersionScala:$unfilteredVersion"
+    compile "net.databinder:unfiltered-jetty_$mainVersionScala:$unfilteredVersion"
+
+    compile "org.json4s:json4s-native_$mainVersionScala:3.2.11"
+
+    testCompile "net.databinder.dispatch:dispatch-core_$mainVersionScala:0.11.2"
+    testCompile "org.specs2:specs2-junit_$mainVersionScala:2.3.13"
+    testCompile "junit:junit:4.12"
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
+
+task stage(dependsOn: ['clean', 'installApp'])

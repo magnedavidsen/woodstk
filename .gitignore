@@ -1,1 +1,7 @@
 .vagrant
+*.iml
+*.ipr
+*.iws
+/projecFilesBackup/
+/.idea/
+/.gradle/
