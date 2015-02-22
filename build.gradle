@@ -19,10 +19,10 @@ dependencies {
     compile "net.databinder:unfiltered-filter_$mainVersionScala:$unfilteredVersion"
     compile "net.databinder:unfiltered-json4s_$mainVersionScala:$unfilteredVersion"
     compile "net.databinder:unfiltered-jetty_$mainVersionScala:$unfilteredVersion"
+    compile "net.databinder.dispatch:dispatch-core_$mainVersionScala:0.11.2"
 
     compile "org.json4s:json4s-native_$mainVersionScala:3.2.11"
 
-    testCompile "net.databinder.dispatch:dispatch-core_$mainVersionScala:0.11.2"
     testCompile "org.specs2:specs2-junit_$mainVersionScala:2.3.13"
     testCompile "junit:junit:4.12"
 }
