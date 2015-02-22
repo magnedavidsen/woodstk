@@ -11,7 +11,7 @@ def mainVersionScala = "2.11"
 def unfilteredVersion = "0.8.4"
 
 applicationName = "woodstk"
-mainClassName = "no.woodstk.App"
+mainClassName = "no.woodstk.Application"
 
 dependencies {
     compile "org.scala-lang:scala-library:$buildScalaVersion"
