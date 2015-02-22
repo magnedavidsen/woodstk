@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, scala ? pkgs.scala_2_11 }:
+{ pkgs ? import <nixpkgs> {}, scala ? pkgs.scala_2_11, gradle ? pkgs.gradle }:
 let
   stdenv = pkgs.stdenv;
   self = _self;
@@ -31,13 +31,14 @@ let
       ...
     }: stdenv.mkDerivation(args // {
     name = "${pname}";
-    nativeBuildInputs = [ pkgs.openjdk scala ];
+    nativeBuildInputs = [ pkgs.openjdk scala gradle];
     buildInputs = buildDepends ++ modules;
     # TODO Don't call javac if there are no java files
     buildPhase = ''
       mkdir -p target/classes
-      scalac $scalacOptions -d target/classes $(find $sources -name \*.scala -or -name \*.java)
-      javac -d target/classes -classpath target/classes $(find $sources -name \*.java) || echo
+      # scalac $scalacOptions -d target/classes $(find $sources -name \*.scala -or -name \*.java)
+      # javac -d target/classes -classpath target/classes $(find $sources -name \*.java) || echo
+      gradle build
       { cd target/classes; jar cfv $pname.jar $(find . -name \*.class); }
     '';
     installPhase = ''
