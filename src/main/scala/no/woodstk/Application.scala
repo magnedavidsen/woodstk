@@ -10,15 +10,16 @@ import scala.util.Properties
 
 object Application extends App {
 
-  val server = Http(Properties.envOrElse("PORT", "8081").toInt).resources(new URL(getClass().getResource("/www/"), "."))
-  server.run()
+ // val server = Http(Properties.envOrElse("PORT", "8081").toInt).resources(new URL(getClass().getResource("/www/"), "."))
+ // server.run()
+  unfiltered.jetty.Server.http(Properties.envOrElse("PORT", "8081").toInt).plan(ComponentRegistry.artistPlan).run()
 }
 
 trait DataSourceComponent {
   val dataSource: DataSource
 }
 
-object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent {
+object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent with PlanComponent {
 
   val dataSource : DataSource = {
     val databaseUrl : Option[String] = Option(System.getenv("DATABASE_URL"))
@@ -47,4 +48,5 @@ object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent {
   }
 
   val artistRepo = new ArtistRepo
+  val artistPlan = new ArtistPlan
 }
