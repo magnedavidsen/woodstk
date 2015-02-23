@@ -16,13 +16,8 @@ trait InMemDBEnvironment extends ArtistRepoComponent with DataSourceComponent {
 }
 
 trait DBTestData{this: InMemDBEnvironment =>
-  val artist1 = new Artist(Some(1), "rapper-1", "imgUrl")
 
   def createAllTables(implicit session: Session) = {
     artistRepo.artists.ddl.create
-  }
-
-  def insertTestData(implicit session: Session) = {
-    artistRepo.createArtist(artist1)
   }
 }
