@@ -1,0 +1,30 @@
+.legend {
+  .women,
+  .men {
+    position: relative;
+    float: left;
+  }
+  .men {
+    margin-left: 1.5rem;
+  }
+  .men .legend-circle {
+    background-color: @bekk-green;
+  }
+  .women .legend-circle {
+    background-color: @bekk-yellow;
+  }
+  @circle-diameter: 10px;
+  .legend-circle {
+    width: @circle-diameter;
+    height: @circle-diameter;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    height: @circle-diameter;
+    margin-top: -(@circle-diameter * 0.5);
+    /* account for padding and border if not using box-sizing: border-box; */
+  }
+  span {
+    margin-left: @circle-diameter + 4;
+  }
+}

@@ -12,7 +12,7 @@ object Application extends App {
 
  // val server = Http(Properties.envOrElse("PORT", "8081").toInt).resources(new URL(getClass().getResource("/www/"), "."))
  // server.run()
-  unfiltered.jetty.Server.http(Properties.envOrElse("PORT", "8081").toInt).plan(ComponentRegistry.artistPlan).run()
+  unfiltered.jetty.Server.http(Properties.envOrElse("PORT", "8081").toInt).plan(ComponentRegistry.artistPlan).resources(new URL(getClass().getResource("/www/"), ".")).run()
 }
 
 trait DataSourceComponent {

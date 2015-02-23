@@ -1,0 +1,29 @@
+{
+  "name": "woodstk",
+  "version": "0.0.1",
+  "description": "Festivals",
+  "dependencies": {
+    "browserify": "^8.1.1",
+    "gulp": "^3.8.10",
+    "gulp-less": "^3.0.0",
+    "gulp-karma": "0.0.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^3.0.2",
+    "karma-jasmine": "^0.3.5",
+    "path": "^0.11.14",
+    "react": "^0.12.2",
+    "reactable": "^0.10.0",
+    "reactify": "^1.0.0",
+    "superagent": "^0.21.0",
+    "underscore": "^1.7.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "devDependencies": {
+    "karma-notify-reporter": "^0.1.1",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}

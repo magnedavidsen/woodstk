@@ -7,3 +7,5 @@
 /.gradle/
 /build/
 /target/
+/frontend/node_modules/
+/src/main/resources/www/dist/
