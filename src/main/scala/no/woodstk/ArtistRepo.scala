@@ -1,29 +1,32 @@
 package no.woodstk
 
-import java.util.UUID
+import scala.slick.driver.JdbcDriver.simple._
+import scala.slick.jdbc.JdbcBackend.Database.dynamicSession
 
-import dispatch.{Http, url}
+trait ArtistRepoComponent {this: DataSourceComponent =>
 
-import scala.concurrent.{Await, ExecutionContext}
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.Duration
+  val artistRepo: ArtistRepo
 
-import org.json4s._
-import org.json4s.JsonDSL._
-import org.json4s.jackson.JsonMethods._
+  class ArtistRepo {
 
-class ArtistRepo {
+    class Artists(tag: Tag) extends Table[Artist](tag, "artists") {
+      def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
+      def name = column[String]("name")
+      def imgUrl = column[String]("img_url")
+      def * = (id.?, name, imgUrl) <> (Artist.tupled, Artist.unapply)
+    }
+    val artists = TableQuery[Artists]
 
-  def createArtist(artist: Artist) = {
-    val uuid : String = UUID.randomUUID().toString
-    val headers : Map[String, Seq[String]] = Map("Content-Type" -> Seq("application/json"), "ES-EventType" -> Seq("ArtistCreated"), "ES-EventId" -> Seq(uuid))
-    val request = url("http://192.168.59.103:2113/streams/artists").setHeaders(headers)
-    def requestWithBody = request << artistToJson(artist)
-    Http(requestWithBody)
-  }
+    def createArtist(artist: Artist) = {
+      Database.forDataSource(dataSource) withDynSession  {
+        artists += artist
+      }
+    }
 
-  def artistToJson(artist: Artist) = {
-    val json = ("artist" -> ("id" -> artist.id) ~ ("name" -> artist.name) ~ ("imgUrl" -> artist.imgUrl))
-    compact(render(json))
+    def getArtists() : List[Artist] = {
+      Database.forDataSource(dataSource) withDynSession  {
+        artists.list
+      }
+    }
   }
 }

@@ -21,10 +21,13 @@ dependencies {
     compile "net.databinder:unfiltered-jetty_$mainVersionScala:$unfilteredVersion"
     compile "net.databinder.dispatch:dispatch-core_$mainVersionScala:0.11.2"
 
+    compile "org.postgresql:postgresql:9.4-1200-jdbc41"
+    compile "com.typesafe.slick:slick_$mainVersionScala:2.1.0"
+
     compile "org.json4s:json4s-native_$mainVersionScala:3.2.11"
     compile "org.json4s:json4s-jackson_$mainVersionScala:3.2.11"
 
-
+    testCompile "com.h2database:h2:1.4.185"
     testCompile "org.specs2:specs2-junit_$mainVersionScala:2.3.13"
     testCompile "junit:junit:4.12"
 }
