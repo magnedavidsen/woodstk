@@ -21,7 +21,11 @@ dependencies {
     compile "net.databinder:unfiltered-jetty_$mainVersionScala:$unfilteredVersion"
     compile "net.databinder.dispatch:dispatch-core_$mainVersionScala:0.11.2"
 
-    compile "org.postgresql:postgresql:9.4-1200-jdbc41"
+    compile "ch.qos.logback:logback-classic:1.1.2"
+
+    compile("org.postgresql:postgresql:9.4-1200-jdbc41"){
+        exclude group: 'org.slf4j', module: 'slf4j-simple'
+    }
     compile "com.typesafe.slick:slick_$mainVersionScala:2.1.0"
 
     compile "org.json4s:json4s-native_$mainVersionScala:3.2.11"
