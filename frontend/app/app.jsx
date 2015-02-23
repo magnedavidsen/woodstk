@@ -10,9 +10,8 @@ rest.getArtists(function (artists) {
   statistics.artists = artists;
 
   React.render(
-    <div className="u-col4">
-      <Header title='by:larm' />
+
       <List artists={statistics.artists} />
-    </div>,
+    ,
     document.getElementById('page'));
   });
