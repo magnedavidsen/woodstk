@@ -1,0 +1,1 @@
+psql -h horton.elephantsql.com -U ihfpeqhb -d ihfpeqhb -f artists.sql
