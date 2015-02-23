@@ -36,10 +36,10 @@ object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent {
       case None => {
         //fallback for dev
         val ds = new PGSimpleDataSource
-        ds.setDatabaseName("nbrno")
-        ds.setUser(Properties.envOrElse("DB_USER", "clocking"))
-        ds.setPassword(Properties.envOrElse("DB_PASSWORD", "clocking"))
-        ds.setServerName("localhost")
+        ds.setDatabaseName("ihfpeqhb")
+        ds.setUser(Properties.envOrElse("DB_USER", "ihfpeqhb"))
+        ds.setPassword(Properties.envOrElse("DB_PASSWORD", "cuTgG-yi4Lwo1Lhm7cR2cZKcfDhyov19"))
+        ds.setServerName("horton.elephantsql.com")
         ds.setPortNumber(5432)
         ds
       }
@@ -47,5 +47,4 @@ object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent {
   }
 
   val artistRepo = new ArtistRepo
-
 }
