@@ -1,0 +1,1 @@
+web: ./build/install/woodstk/bin/woodstk
