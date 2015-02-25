@@ -44,15 +44,9 @@ var ArtistList = React.createClass({
             // e.target Reference to the element that has been thrown out of the stack.
             // e.throwDirection Direction in which the element has been thrown (Card.DIRECTION_LEFT, Card.DIRECTION_RIGHT).
 
-            e.target.style.transform = "none";
-            e.target.style.webkitTransform = "none";
-            e.target.style.mozTransform = "none";
-            e.target.style.oTransform = "none";
-
             var card = aModule.stack.getCard(e.target);
-            card.destroy();
-            aModule.stack.createCard(e.target);
-
+            card.throwIn(0, 0);
+ 
             aModule.setState({swipes: aModule.state.swipes + 1});
 
             console.log('Card has been thrown out of the stack.');
