@@ -16,10 +16,10 @@ object Application extends App {
 }
 
 trait DataSourceComponent {
-  val dataSource: DataSource
+  def dataSource: DataSource
 }
 
-object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent with PlanComponent {
+object ComponentRegistry extends ArtistRepoComponent with VoteRepoComponent with DataSourceComponent with PlanComponent {
 
   val dataSource : DataSource = {
     val databaseUrl : Option[String] = Option(System.getenv("DATABASE_URL"))
@@ -49,4 +49,6 @@ object ComponentRegistry extends ArtistRepoComponent with DataSourceComponent wi
 
   val artistRepo = new ArtistRepo
   val artistPlan = new ArtistPlan
+  val voteRepo = new VoteRepo
+  val votePlan = new VotePlan
 }

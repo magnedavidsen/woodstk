@@ -5,7 +5,7 @@ import scala.slick.jdbc.JdbcBackend.Database.dynamicSession
 
 trait ArtistRepoComponent {this: DataSourceComponent =>
 
-  val artistRepo: ArtistRepo
+  def artistRepo: ArtistRepo
 
   class ArtistRepo {
 
@@ -15,6 +15,7 @@ trait ArtistRepoComponent {this: DataSourceComponent =>
       def imgUrl = column[String]("img_url")
       def * = (id.?, name, imgUrl) <> (Artist.tupled, Artist.unapply)
     }
+
     val artists = TableQuery[Artists]
 
     def createArtist(artist: Artist) = {
@@ -24,6 +25,12 @@ trait ArtistRepoComponent {this: DataSourceComponent =>
     }
 
     def getArtists() : List[Artist] = {
+      Database.forDataSource(dataSource) withDynSession  {
+        artists.list
+      }
+    }
+
+    def getArtistsWithScore() : List[Artist] = {
       Database.forDataSource(dataSource) withDynSession  {
         artists.list
       }
