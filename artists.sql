@@ -18,7 +18,6 @@ INSERT INTO artists (img_url, name) VALUES
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_150_20150113103806_53297dc2.jpg', 'Carnival Kids'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_82_20150112110406_0d3780f8.jpg', 'Cezinando'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_108_20150112110409_d95b0965.jpg', 'Chain Wallet'),
-  ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_539_20150218020254_d559ec7b.jpg', 'Christine'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_402_20150205085830_07b4b70f.jpg', 'Cleo & Broke n Tipsy'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_97_20150112110408_4948abbe.jpg', 'Communions'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_394_20150205085826_ecec40e5.jpg', 'Coucheron'),
@@ -114,7 +113,3 @@ INSERT INTO artists (img_url, name) VALUES
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_64_20150112110403_5cac5779.jpg', 'Vulkano'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_475_20150213095823_c59e3611.jpg', 'WDSTCK'),
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_480_20150213095837_78439dbe.jpg', 'XOV');
-
-
-
-
