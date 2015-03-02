@@ -12,8 +12,10 @@ rest.getArtists(function (artists) {
   statistics.artists = artists;
 
   React.render(
-
-      <List initialArtists={statistics.artists} />
+      <div>
+        <Header title="woodstk" />
+        <List initialArtists={statistics.artists} />
+      </div>
     ,
     document.getElementById('page'));
   });
