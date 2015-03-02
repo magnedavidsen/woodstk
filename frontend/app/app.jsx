@@ -1,7 +1,7 @@
 var React = require('react');
 
 var Header = require('./header.jsx');
-var List = require('./list.jsx');
+var Cards = require('./cards.jsx');
 
 var statistics = require('./js/statistics.js');
 var rest = require('./js/rest.js');
@@ -14,7 +14,7 @@ rest.getArtists(function (artists) {
   React.render(
     <div>
       <Header title="woodstk" />
-      <List initialArtists={statistics.artists} />
+      <Cards initialArtists={statistics.artists} />
     </div>
     ,
     document.getElementById('page'));
