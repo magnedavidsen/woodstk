@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS votes;
 
 create table artists (id SERIAL, name VARCHAR(254) NOT NULL,img_url VARCHAR(254) NOT NULL);
-create table votes (id SERIAL, arists_id INT NOT NULL, points INT NOT NULL, ip VARCHAR(254), session VARCHAR(254));
+create table votes (id SERIAL, artist_id INT NOT NULL, points INT NOT NULL, ip VARCHAR(254), session VARCHAR(254));
 
 INSERT INTO artists (img_url, name) VALUES
   ('http://goevent-images.s3.amazonaws.com/bylarm-2015/8343e983/web/artist_68_20150112110404_922cc1da.jpg', '$ushi X Kobe'),
