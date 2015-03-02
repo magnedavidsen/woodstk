@@ -71,7 +71,7 @@ var ArtistList = React.createClass({
       // e.throwDirection Direction in which the element has been thrown (Card.DIRECTION_LEFT, Card.DIRECTION_RIGHT).
 
       var points = e.throwDirection === Swing.Card.DIRECTION_LEFT ? -1 : 1;
-      rest.vote(e.target.id, points);
+      rest.vote(parseInt(e.target.id), points);
 
       var card = aModule.stack.getCard(e.target);
 
