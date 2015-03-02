@@ -14,7 +14,7 @@ rest.getArtists(function (artists) {
   React.render(
     <div>
       <Header title="woodstk" />
-      <Cards initialArtists={statistics.artists} />
+      <Cards initialArtists={_.shuffle(statistics.artists)} />
     </div>
     ,
     document.getElementById('page'));
