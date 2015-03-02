@@ -1,5 +1,6 @@
 var React = require('react');
 var Swing = require('swing');
+var Question = require('./question.jsx');
 
 var statistics = require('./js/statistics.js');
 var rest = require('./js/rest.js');
@@ -16,11 +17,11 @@ var ArtistList = React.createClass({
   stack: {},
 
   getInitialState: function() {
-    return {swipes: 0, artists: this.props.initialArtists, cards: []};
+    return {artists: this.props.initialArtists, cards: []};
   },
 
   render: function () {
-    var swipes = this.state.swipes;
+    var swipes = this.props.swipes;
     var artists = this.state.artists;
 
     function styleIt(number) {
@@ -34,7 +35,7 @@ var ArtistList = React.createClass({
         <div className="no">:(</div></li>);
     });
 
-    return (<ul className="stack">{cards}</ul>);
+    return (<div id="viewport"><ul className="stack">{cards}</ul></div>);
   },
   componentDidMount: function () {
     var aModule = this;
@@ -81,10 +82,9 @@ var ArtistList = React.createClass({
       card.destroy();
       aModule.stack.createCard(e.target);
 
-      aModule.setState({swipes: aModule.state.swipes + 1});
+      aModule.props.addSwipe();
 
       console.log('Card has been thrown out of the stack.');
-      console.log(aModule.state.swipes + ' cards have been thrown out of the stack.');
       console.log('Throw direction: ' + (e.throwDirection));
     });
 
@@ -96,10 +96,20 @@ var ArtistList = React.createClass({
 });
 
 module.exports = React.createClass({
+
+  getInitialState: function() {
+    return {swipes: 0};
+  },
+
+  addSwipe: function (){
+    this.setState({swipes: this.state.swipes + 1});
+    console.log("SWIPED. Total of: " + this.state.swipes);
+  },
   render: function() {
     return (
-      <div id="viewport">
-        <ArtistList initialArtists={this.props.initialArtists} />
+      <div>
+        <ArtistList initialArtists={this.props.initialArtists} swipes={this.state.swipes} addSwipe={this.addSwipe} />
+        <Question addSwipe={this.addSwipe}/>
       </div>
     );
   }});

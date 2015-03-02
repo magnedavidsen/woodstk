@@ -3,6 +3,7 @@ var React = require('react');
 var Header = require('./header.jsx');
 var Cards = require('./cards.jsx');
 
+
 var statistics = require('./js/statistics.js');
 var rest = require('./js/rest.js');
 
@@ -15,11 +16,8 @@ rest.getArtists(function (artists) {
     <div>
       <Header title="woodstk" />
       <Cards initialArtists={_.shuffle(statistics.artists)} />
+
     </div>
     ,
     document.getElementById('page'));
 });
-
-document.ontouchstart = function(e){
-  e.preventDefault();
-}
