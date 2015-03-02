@@ -12,14 +12,14 @@ rest.getArtists(function (artists) {
   statistics.artists = artists;
 
   React.render(
-      <div>
-        <Header title="woodstk" />
-        <List initialArtists={statistics.artists} />
-      </div>
+    <div>
+      <Header title="woodstk" />
+      <List initialArtists={statistics.artists} />
+    </div>
     ,
     document.getElementById('page'));
-  });
+});
 
 document.ontouchstart = function(e){
-    e.preventDefault();
+  e.preventDefault();
 }
